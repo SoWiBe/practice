@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6ddcefc7e454be79d84eed382dcb0f4" Name="Diagram1">
+        <EntityTypeShape EntityType="user4Model.Agents" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Epmloyees" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.HistoryOfPost" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.HistoryPrioritet" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Manager" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Materials" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Product_short" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Production" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Supplier" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user4Model.Productsale" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="user4Model.FK_Agents_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Productsale_Agents" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Epmloyees_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Epmloyees_Production" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_HistoryOfPost_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Supplier_HistoryOfPost" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Supplier_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="user4Model.FK_Productsale_Product_short" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище user4Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="EmailAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="255" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="Priority" Type="nvarchar" MaxLength="255" />
+    <Property Name="Derector" Type="nvarchar" MaxLength="255" />
+    <Property Name="INN" Type="float" />
+    <Property Name="KPP" Type="float" />
+    <Property Name="IdManager" Type="int" />
+  </EntityType>
+  <EntityType Name="Epmloyees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Passport" Type="nvarchar" MaxLength="50" />
+    <Property Name="BankData" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdProduction" Type="int" Nullable="false" />
+    <Property Name="Family" Type="bit" />
+    <Property Name="Health" Type="bit" />
+    <Property Name="IdManager" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistoryOfPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Date" Type="date" />
+  </EntityType>
+  <EntityType Name="HistoryPrioritet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="OldPriority" Type="nvarchar" MaxLength="50" />
+    <Property Name="Priority" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Specialization" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="SomePost" Type="nvarchar" MaxLength="50" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Numeric" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountOnBase" Type="int" />
+    <Property Name="MinCount" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="money" />
+  </EntityType>
+  <EntityType Name="Product_short">
+    <Key>
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameOfProduct" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="Artikul" Type="float" />
+    <Property Name="CountHumanForSale" Type="int" />
+    <Property Name="NomerEnviriment" Type="int" />
+    <Property Name="MinPriceForAgent" Type="money" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="nchar" MaxLength="10" />
+    <Property Name="Price" Type="nchar" MaxLength="10" />
+    <Property Name="Number" Type="nchar" MaxLength="10" />
+    <Property Name="CountHuman" Type="nchar" MaxLength="10" />
+    <Property Name="Materials" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "user4.dbo.Productsale" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Productsale">
+    <Key>
+      <PropertyRef Name="IdAgent" />
+      <PropertyRef Name="IdПродукта" />
+    </Key>
+    <Property Name="IdAgent" Type="int" Nullable="false" />
+    <Property Name="IdПродукта" Type="int" Nullable="false" />
+    <Property Name="Продукция" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameAgent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="CountProducts" Type="int" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="INN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdPost" Type="int" Nullable="false" />
+    <Property Name="IdManager" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Agents_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agents">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Epmloyees_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="Epmloyees" Type="Self.Epmloyees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Epmloyees">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Epmloyees_Production">
+    <End Role="Production" Type="Self.Production" Multiplicity="1" />
+    <End Role="Epmloyees" Type="Self.Epmloyees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Production">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Epmloyees">
+        <PropertyRef Name="IdProduction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoryOfPost_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="HistoryOfPost" Type="Self.HistoryOfPost" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoryOfPost">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productsale_Agents">
+    <End Role="Agents" Type="Self.Agents" Multiplicity="1" />
+    <End Role="Productsale" Type="Self.Productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Productsale">
+        <PropertyRef Name="IdAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productsale_Product_short">
+    <End Role="Product_short" Type="Self.Product_short" Multiplicity="1" />
+    <End Role="Productsale" Type="Self.Productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_short">
+        <PropertyRef Name="IdProduct" />
+      </Principal>
+      <Dependent Role="Productsale">
+        <PropertyRef Name="IdПродукта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_HistoryOfPost">
+    <End Role="HistoryOfPost" Type="Self.HistoryOfPost" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HistoryOfPost">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище user4ModelContainer">
+    <EntitySet Name="Agents" EntityType="Self.Agents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Epmloyees" EntityType="Self.Epmloyees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryOfPost" EntityType="Self.HistoryOfPost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryPrioritet" EntityType="Self.HistoryPrioritet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_short" EntityType="Self.Product_short" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Production" EntityType="Self.Production" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productsale" EntityType="Self.Productsale" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Productsale].[IdAgent] AS [IdAgent], 
+    [Productsale].[IdПродукта] AS [IdПродукта], 
+    [Productsale].[Продукция] AS [Продукция], 
+    [Productsale].[NameAgent] AS [NameAgent], 
+    [Productsale].[Date] AS [Date], 
+    [Productsale].[CountProducts] AS [CountProducts]
+    FROM [dbo].[Productsale] AS [Productsale]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Agents_Manager" Association="Self.FK_Agents_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Agents" EntitySet="Agents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Epmloyees_Manager" Association="Self.FK_Epmloyees_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Epmloyees" EntitySet="Epmloyees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Epmloyees_Production" Association="Self.FK_Epmloyees_Production">
+      <End Role="Production" EntitySet="Production" />
+      <End Role="Epmloyees" EntitySet="Epmloyees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoryOfPost_Materials" Association="Self.FK_HistoryOfPost_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="HistoryOfPost" EntitySet="HistoryOfPost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productsale_Agents" Association="Self.FK_Productsale_Agents">
+      <End Role="Agents" EntitySet="Agents" />
+      <End Role="Productsale" EntitySet="Productsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productsale_Product_short" Association="Self.FK_Productsale_Product_short">
+      <End Role="Product_short" EntitySet="Product_short" />
+      <End Role="Productsale" EntitySet="Productsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_HistoryOfPost" Association="Self.FK_Supplier_HistoryOfPost">
+      <End Role="HistoryOfPost" EntitySet="HistoryOfPost" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_Manager" Association="Self.FK_Supplier_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

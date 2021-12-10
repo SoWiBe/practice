@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="user4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeAgent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NameAgent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAgent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Derector" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INN" Type="Double" />
+    <Property Name="KPP" Type="Double" />
+    <Property Name="IdManager" Type="Int32" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_Agents_Manager" FromRole="Agents" ToRole="Manager" />
+    <NavigationProperty Name="Productsale" Relationship="Self.FK_Productsale_Agents" FromRole="Agents" ToRole="Productsale" />
+  </EntityType>
+  <EntityType Name="Epmloyees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Passport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdProduction" Type="Int32" Nullable="false" />
+    <Property Name="Family" Type="Boolean" />
+    <Property Name="Health" Type="Boolean" />
+    <Property Name="IdManager" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_Epmloyees_Manager" FromRole="Epmloyees" ToRole="Manager" />
+    <NavigationProperty Name="Production" Relationship="Self.FK_Epmloyees_Production" FromRole="Epmloyees" ToRole="Production" />
+  </EntityType>
+  <EntityType Name="HistoryOfPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMaterial" Type="Int32" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_HistoryOfPost_Materials" FromRole="HistoryOfPost" ToRole="Materials" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_HistoryOfPost" FromRole="HistoryOfPost" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="HistoryPrioritet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OldPriority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Agents" Relationship="Self.FK_Agents_Manager" FromRole="Manager" ToRole="Agents" />
+    <NavigationProperty Name="Epmloyees" Relationship="Self.FK_Epmloyees_Manager" FromRole="Manager" ToRole="Epmloyees" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_Manager" FromRole="Manager" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SomePost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Numeric" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountOnBase" Type="Int32" />
+    <Property Name="MinCount" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="HistoryOfPost" Relationship="Self.FK_HistoryOfPost_Materials" FromRole="Materials" ToRole="HistoryOfPost" />
+  </EntityType>
+  <EntityType Name="Product_short">
+    <Key>
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfProduct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Artikul" Type="Double" />
+    <Property Name="CountHumanForSale" Type="Int32" />
+    <Property Name="NomerEnviriment" Type="Int32" />
+    <Property Name="MinPriceForAgent" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Productsale" Relationship="Self.FK_Productsale_Product_short" FromRole="Product_short" ToRole="Productsale" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CountHuman" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Materials" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Epmloyees" Relationship="Self.FK_Epmloyees_Production" FromRole="Production" ToRole="Epmloyees" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="INN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdPost" Type="Int32" Nullable="false" />
+    <Property Name="IdManager" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HistoryOfPost" Relationship="Self.FK_Supplier_HistoryOfPost" FromRole="Supplier" ToRole="HistoryOfPost" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_Supplier_Manager" FromRole="Supplier" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Productsale">
+    <Key>
+      <PropertyRef Name="IdAgent" />
+      <PropertyRef Name="IdПродукта" />
+    </Key>
+    <Property Name="IdAgent" Type="Int32" Nullable="false" />
+    <Property Name="IdПродукта" Type="Int32" Nullable="false" />
+    <Property Name="Продукция" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NameAgent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="CountProducts" Type="Int32" />
+    <NavigationProperty Name="Agents" Relationship="Self.FK_Productsale_Agents" FromRole="Productsale" ToRole="Agents" />
+    <NavigationProperty Name="Product_short" Relationship="Self.FK_Productsale_Product_short" FromRole="Productsale" ToRole="Product_short" />
+  </EntityType>
+  <Association Name="FK_Agents_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agents">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productsale_Agents">
+    <End Role="Agents" Type="Self.Agents" Multiplicity="1" />
+    <End Role="Productsale" Type="Self.Productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Productsale">
+        <PropertyRef Name="IdAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Epmloyees_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="Epmloyees" Type="Self.Epmloyees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Epmloyees">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Epmloyees_Production">
+    <End Role="Production" Type="Self.Production" Multiplicity="1" />
+    <End Role="Epmloyees" Type="Self.Epmloyees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Production">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Epmloyees">
+        <PropertyRef Name="IdProduction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoryOfPost_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="HistoryOfPost" Type="Self.HistoryOfPost" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoryOfPost">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_HistoryOfPost">
+    <End Role="HistoryOfPost" Type="Self.HistoryOfPost" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HistoryOfPost">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productsale_Product_short">
+    <End Role="Product_short" Type="Self.Product_short" Multiplicity="1" />
+    <End Role="Productsale" Type="Self.Productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_short">
+        <PropertyRef Name="IdProduct" />
+      </Principal>
+      <Dependent Role="Productsale">
+        <PropertyRef Name="IdПродукта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="user4Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agents" EntityType="Self.Agents" />
+    <EntitySet Name="Epmloyees" EntityType="Self.Epmloyees" />
+    <EntitySet Name="HistoryOfPost" EntityType="Self.HistoryOfPost" />
+    <EntitySet Name="HistoryPrioritet" EntityType="Self.HistoryPrioritet" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" />
+    <EntitySet Name="Materials" EntityType="Self.Materials" />
+    <EntitySet Name="Product_short" EntityType="Self.Product_short" />
+    <EntitySet Name="Production" EntityType="Self.Production" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Productsale" EntityType="Self.Productsale" />
+    <AssociationSet Name="FK_Agents_Manager" Association="Self.FK_Agents_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Agents" EntitySet="Agents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productsale_Agents" Association="Self.FK_Productsale_Agents">
+      <End Role="Agents" EntitySet="Agents" />
+      <End Role="Productsale" EntitySet="Productsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Epmloyees_Manager" Association="Self.FK_Epmloyees_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Epmloyees" EntitySet="Epmloyees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Epmloyees_Production" Association="Self.FK_Epmloyees_Production">
+      <End Role="Production" EntitySet="Production" />
+      <End Role="Epmloyees" EntitySet="Epmloyees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoryOfPost_Materials" Association="Self.FK_HistoryOfPost_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="HistoryOfPost" EntitySet="HistoryOfPost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_HistoryOfPost" Association="Self.FK_Supplier_HistoryOfPost">
+      <End Role="HistoryOfPost" EntitySet="HistoryOfPost" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_Manager" Association="Self.FK_Supplier_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productsale_Product_short" Association="Self.FK_Productsale_Product_short">
+      <End Role="Product_short" EntitySet="Product_short" />
+      <End Role="Productsale" EntitySet="Productsale" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(user4Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(user4Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
